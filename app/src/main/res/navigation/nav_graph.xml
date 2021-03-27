@@ -7,8 +7,8 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.joshua.queuenumber.FirstFragment"
+        android:name="com.joshua.queuenumber.QueueFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        tools:layout="@layout/fragment_queue">
     </fragment>
 </navigation>

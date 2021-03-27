@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
-class FirstViewModel : ViewModel() {
+class QueueViewModel : ViewModel() {
     private val _number = MutableLiveData<Int>().also { it.value = 0 }
     val number: LiveData<Int> = _number
 

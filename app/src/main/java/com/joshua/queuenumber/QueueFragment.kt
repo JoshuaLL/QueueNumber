@@ -6,17 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import kotlinx.android.synthetic.main.fragment_first.*
+import kotlinx.android.synthetic.main.fragment_queue.*
 
-class FirstFragment : Fragment() {
+class QueueFragment : Fragment() {
 
-    private val viewModel: FirstViewModel by viewModels()
+    private val viewModel: QueueViewModel by viewModels()
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_first, container, false)
+        return inflater.inflate(R.layout.fragment_queue, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

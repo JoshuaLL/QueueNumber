@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FirstFragment">
+    tools:context=".QueueFragment">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_horizontal_top"
@@ -64,18 +64,18 @@
         android:text="@string/processing"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@id/guideline_horizontal_top"
-        app:layout_constraintEnd_toEndOf="@+id/guideline_vertical_right"
-        app:layout_constraintStart_toStartOf="@+id/guideline_vertical_right" />
+        app:layout_constraintEnd_toEndOf="@+id/guideline_vertical_center"
+        app:layout_constraintStart_toStartOf="@+id/guideline_vertical_center" />
 
     <TextView
-        android:id="@+id/tv_processed"
+        android:id="@+id/processed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/processed"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@id/guideline_horizontal_top"
-        app:layout_constraintEnd_toEndOf="@+id/guideline_vertical_center"
-        app:layout_constraintStart_toStartOf="@+id/guideline_vertical_center" />
+        app:layout_constraintEnd_toEndOf="@+id/guideline_vertical_right"
+        app:layout_constraintStart_toStartOf="@+id/guideline_vertical_right" />
 
     <TextView
         android:id="@+id/tv_waiting"
@@ -108,6 +108,5 @@
         app:layout_constraintTop_toTopOf="@id/guideline_horizontal_top"
         app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal_bottom"
         tools:listitem="@layout/item_counter_state"/>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
