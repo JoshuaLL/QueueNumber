@@ -71,7 +71,7 @@
         android:id="@+id/tv_processed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/processing"
+        android:text="@string/processed"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@id/guideline_horizontal_top"
         app:layout_constraintEnd_toEndOf="@+id/guideline_vertical_center"

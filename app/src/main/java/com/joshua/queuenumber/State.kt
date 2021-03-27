@@ -1,33 +1,25 @@
-package com.joshua.queuenumber.vo
+package com.joshua.queuenumber
 
-data class CounterItem(
-                 val id:Int,
-                 val name:String,
-                 var processing:EventState =EventState.Idle(),
-                 var processed:MutableList<Int> = mutableListOf())
-
+data class CounterItem(val id:Int,
+                       val name:String,
+                       var processing: EventState = EventState.Idle(),
+                       var processed:MutableList<Int> = mutableListOf())
 
 sealed class EventState {
     data class Idle(val state: String= "idle"): EventState()
-    data class Processing(
-        val number: String
-     ): EventState()
+    data class Processing( val taskItem: TaskItem): EventState()
 }
 
-class Task<out T>(private val content: T) {
+data class TaskItem(val number:Int,
+                    val handledTime:Long= (500L..1500L).random()
+)
 
+data class Task(var content: TaskItem) {
     var taskHandled = false
         private set
 
-    fun handledTime()= (500L..1500L).random()
-
-    fun doTaskIfNotHandled(): T? {
-        return if (taskHandled) {
-            null
-        } else {
-            taskHandled = true
-            content
-        }
+    fun doTaskIfNotHandled(){
+         if (!taskHandled) taskHandled = true
     }
 }
 

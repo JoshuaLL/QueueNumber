@@ -28,8 +28,9 @@ class FirstFragment : Fragment() {
     private fun initUI(){
         CounterAdapter().let { counterAdapter ->
             rv_state_list.adapter = counterAdapter
-            viewModel.taskList.observe(viewLifecycleOwner){
+            viewModel.counterList.observe(viewLifecycleOwner){
                 counterAdapter.submitList(it)
+                counterAdapter.notifyDataSetChanged()
             }
         }
 
@@ -37,12 +38,19 @@ class FirstFragment : Fragment() {
             btn_next.text = getString(R.string.next, it)
         }
 
-        viewModel.queues.observe(viewLifecycleOwner){
-            tv_waiting.text = getString(R.string.waiting, it)
+        viewModel.queues.observe(viewLifecycleOwner){tasks->
+            tasks.takeIf { it.size > 0 }?.let {
+                it.filter { !it.taskHandled }.takeIf { it.isNotEmpty()}?.let {
+                    viewModel.assignTask()
+                }
+                tv_waiting.text = getString(R.string.waiting, tasks.size)
+            } ?: run {
+                tv_waiting.text = getString(R.string.waiting, 0)
+            }
         }
 
         btn_next.setOnClickListener {
-            viewModel.doTasks()
+            viewModel.addTasks()
         }
 
     }

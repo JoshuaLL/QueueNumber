@@ -7,8 +7,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.joshua.queuenumber.vo.CounterItem
-import com.joshua.queuenumber.vo.EventState
 import kotlinx.android.synthetic.main.item_counter_state.view.*
 
 class CounterAdapter : ListAdapter<CounterItem, RecyclerView.ViewHolder>(PlantDiffCallback()) {
@@ -26,7 +24,7 @@ class CounterAdapter : ListAdapter<CounterItem, RecyclerView.ViewHolder>(PlantDi
             holder.processingState.text = processing.let {
                 when(it){
                     is EventState.Idle -> it.state
-                    is EventState.Processing -> it.number
+                    is EventState.Processing -> it.taskItem.number.toString()
                 }
             }
             holder.processed.text = processed.joinToString()
