@@ -10,4 +10,5 @@
     <string name="processed">Processed</string>
     <string name="waiting">Waiting: %d</string>
     <string name="idle">idle</string>
+    <string name="clear">Clear</string>
 </resources>

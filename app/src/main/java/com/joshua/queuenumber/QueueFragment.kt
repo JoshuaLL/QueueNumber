@@ -22,7 +22,7 @@ class QueueFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initUI()
-        viewModel.initList(resources.getStringArray(R.array.counters).toMutableList())
+        setData()
     }
 
     private fun initUI(){
@@ -44,8 +44,10 @@ class QueueFragment : Fragment() {
                     viewModel.assignTask()
                 }
                 tv_waiting.text = getString(R.string.waiting, tasks.size)
+                btn_clear.isEnabled =false
             } ?: run {
                 tv_waiting.text = getString(R.string.waiting, 0)
+                btn_clear.isEnabled =true
             }
         }
 
@@ -53,5 +55,14 @@ class QueueFragment : Fragment() {
             viewModel.addTasks()
         }
 
+        btn_clear.setOnClickListener {
+            viewModel.reset()
+            setData()
+        }
+
+    }
+
+    private fun setData(){
+        viewModel.initList(resources.getStringArray(R.array.counters).toMutableList())
     }
 }

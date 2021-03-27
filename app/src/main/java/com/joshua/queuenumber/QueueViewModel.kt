@@ -4,13 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
+import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.launch
 
 class QueueViewModel : ViewModel() {
     private val _number = MutableLiveData<Int>().also { it.value = 0 }
@@ -24,10 +22,14 @@ class QueueViewModel : ViewModel() {
 
     fun initList(counters: MutableList<String>) {
         counters.apply { sort() }.let {
-            it.mapIndexed { id, name ->
-                CounterItem(id, name)
+            it.mapIndexed { id, name -> CounterItem(id, name)
             }.let { items -> _counterList.value = items.toMutableList() }
         }
+    }
+
+    fun reset(){
+        _number.value =0
+        _queues.value = mutableListOf()
     }
 
     fun addTasks() {
@@ -42,8 +44,7 @@ class QueueViewModel : ViewModel() {
 
     fun assignTask() {
         viewModelScope.launch {
-            _counterList.value?.filter {
-                it.processing is EventState.Idle
+            _counterList.value?.filter { it.processing is EventState.Idle
             }?.takeIf { it.isNotEmpty() }?.get(0)?.let { counter ->
                 _queues.value?.let { queues ->
                     queues.firstOrNull{ !it.taskHandled }?.let {
@@ -86,6 +87,4 @@ class QueueViewModel : ViewModel() {
             if(_queues.value?.isNotEmpty() == true) assignTask()
         }
     }
-
-
 }
