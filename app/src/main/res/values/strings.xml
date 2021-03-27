@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">QueueNumber</string>
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="action_settings">Settings</string>
+    <string name="next">Next %d</string>
+    <string name="previous">Previous</string>
+    <string name="counter">Counter</string>
+    <string name="processing">Processing</string>
+    <string name="processed">Processed</string>
+    <string name="waiting">Waiting: %d</string>
+    <string name="idle">idle</string>
+</resources>
