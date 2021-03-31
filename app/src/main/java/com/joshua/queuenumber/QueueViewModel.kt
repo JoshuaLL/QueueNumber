@@ -67,7 +67,7 @@ class QueueViewModel : ViewModel() {
             delay(task.content.handledTime)
             emit(task)
 
-        }.flowOn(Dispatchers.IO).map {
+        }.flowOn(Dispatchers.Main).map {
             counter.processing = EventState.Idle()
             counter.processed.add(task.content.number)
             _counterList.value?.let { counters ->
